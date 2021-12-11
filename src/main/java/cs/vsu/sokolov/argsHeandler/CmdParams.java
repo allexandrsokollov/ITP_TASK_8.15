@@ -1,4 +1,4 @@
-package cs.vsu.sokolov;
+package cs.vsu.sokolov.argsHeandler;
 
 import java.util.Objects;
 

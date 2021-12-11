@@ -1,5 +1,7 @@
 package cs.vsu.sokolov;
 
+import cs.vsu.sokolov.argsHeandler.CmdParams;
+import cs.vsu.sokolov.argsHeandler.ParamsReader;
 import org.junit.Assert;
 
 import java.util.ArrayList;
