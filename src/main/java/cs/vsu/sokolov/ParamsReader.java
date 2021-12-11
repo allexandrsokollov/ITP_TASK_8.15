@@ -1,25 +1,46 @@
 package cs.vsu.sokolov;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
 
 public class ParamsReader {
-
-    public static class CmdParams {
-        public boolean help;
-        public boolean execute;
-        public boolean openGUI;
-        public boolean error;
-        public String inputFile;
-        public String outputFile;
-    }
 
     public static CmdParams parseArgs(String[] args) {
         CmdParams prams = new CmdParams();
 
-        if (args.length > 0) {
-            if ()
+        if (args.length < 1) {
+            prams.help = true;
+            return prams;
         }
+
+        if (args.length < 4) {
+            prams.error = true;
+            prams.help = true;
+            return prams;
+        }
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].equals("--help")) {
+                prams.help = true;
+                return prams;
+            }
+
+            if (args[i].equals("--inputFile") && (i + 1 != args.length)) {
+                i++;
+                prams.inputFile = args[i];
+                continue;
+            }
+
+            if (args[i].equals("--outputFile") && (i + 1 != args.length)) {
+                i++;
+                prams.outputFile = args[i];
+            }
+        }
+
+        if (prams.outputFile == null || prams.inputFile == null) {
+            prams.error  = true;
+        }
+        return prams;
     }
+
+
 }
+
+
