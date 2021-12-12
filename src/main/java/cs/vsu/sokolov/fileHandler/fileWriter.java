@@ -1,30 +1,34 @@
 package cs.vsu.sokolov.fileHandler;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class fileWriter {
 
-    private final String filePath;
+    String fileName;
 
-    public fileWriter(String filePath) {
-        this.filePath = filePath;
+
+    public fileWriter(String fileName) {
+        this.fileName = fileName;
     }
 
     public void writeTwoDimensIntArr (int[][] ints) throws IOException {
 
-        try (FileOutputStream out = new FileOutputStream(filePath)) {
+        try (FileWriter out = new FileWriter(fileName)) {
+            PrintWriter printWriter = new PrintWriter(out);
 
+            StringBuilder str = new StringBuilder();
             for (int[] anInt : ints) {
                 for (int i : anInt) {
-                    out.write((byte) i);
-                    out.write((byte) ' ');
+                    str.append(i);
+                    str.append(" ");
                 }
-                out.write((byte) '\n');
+                str.append("\n");
             }
+
+            printWriter.print(str);
         }
 
-        System.out.printf("Array has been written to file %s", filePath);
+        System.out.printf("Array has been written to file %s", fileName);
     }
 
 
