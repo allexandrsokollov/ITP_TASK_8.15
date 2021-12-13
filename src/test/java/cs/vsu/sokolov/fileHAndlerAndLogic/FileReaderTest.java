@@ -1,5 +1,6 @@
-package cs.vsu.sokolov.fileHandler;
+package cs.vsu.sokolov.fileHAndlerAndLogic;
 
+import cs.vsu.sokolov.Logic.fileHandler.fileReader;
 import org.junit.Assert;
 import org.junit.Test;
 

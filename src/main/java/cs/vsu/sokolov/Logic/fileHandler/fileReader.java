@@ -1,10 +1,8 @@
-package cs.vsu.sokolov.fileHandler;
+package cs.vsu.sokolov.Logic.fileHandler;
 
 import util.ArrayUtils;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class fileReader {
 

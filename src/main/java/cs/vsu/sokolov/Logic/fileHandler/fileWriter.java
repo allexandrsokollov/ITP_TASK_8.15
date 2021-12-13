@@ -1,4 +1,4 @@
-package cs.vsu.sokolov.fileHandler;
+package cs.vsu.sokolov.Logic.fileHandler;
 
 import java.io.*;
 
