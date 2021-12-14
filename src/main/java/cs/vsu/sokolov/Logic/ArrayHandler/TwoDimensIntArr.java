@@ -28,8 +28,33 @@ public class TwoDimensIntArr {
             return null;
         }
 
-        return transposeMatrix(tempTransposed);
+        int[][] result = transposeMatrix(tempTransposed);
+
+        boolean isThereSmthng = false;
+        boolean[] check = whichElemToDelete(result);
+        boolean[] check2 = whichElemToDelete(transposeMatrix(result));
+
+        for (boolean i : check) {
+            if (i) {
+                isThereSmthng = true;
+                break;
+            }
+        }
+
+        for (boolean i : check2) {
+            if (i) {
+                isThereSmthng = true;
+                break;
+            }
+        }
+
+        if (isThereSmthng) {
+            result = getIntArrWithoutSameRowsAndColumns(result);
+        }
+        return result;
     }
+
+
 
     private static int[][] getIntArrWithoutSameRows(int[][] arr) {
 
@@ -102,7 +127,7 @@ public class TwoDimensIntArr {
         for (int i = 0; i < arr.length; i++) {
             list.add(new ArrayList<>());
 
-            for (int j = 1; j < arr[i].length; j++) {
+            for (int j = 0; j < arr[i].length; j++) {
                 list.get(i).add(arr[i][j]);
             }
         }

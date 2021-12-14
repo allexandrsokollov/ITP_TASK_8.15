@@ -60,5 +60,16 @@ public class ConsoleProgramTest {
         ConsoleProgram.task(args4);
         Assert.assertArrayEquals(expected4,
                 MyFileReader.getTwoDimensIntArr("src/main/resources/filesToTestTask/out4.txt"));
+
+        int[][] expected5 = new int[][] {{1},{1},{1},{2}};
+        String[] args5 = new String[4];
+        args5[0] = "--inputFile";
+        args5[1] = "src/main/resources/filesToTestTask/5.txt";
+        args5[2] = "--outputFile";
+        args5[3] = "src/main/resources/filesToTestTask/out5.txt";
+
+        ConsoleProgram.task(args5);
+        Assert.assertArrayEquals(expected5,
+                MyFileReader.getTwoDimensIntArr("src/main/resources/filesToTestTask/out5.txt"));
        }
 }
