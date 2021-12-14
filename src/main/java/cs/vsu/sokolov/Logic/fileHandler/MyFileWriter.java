@@ -2,16 +2,21 @@ package cs.vsu.sokolov.Logic.fileHandler;
 
 import java.io.*;
 
-public class fileWriter {
+public class MyFileWriter {
 
     String fileName;
 
 
-    public fileWriter(String fileName) {
+    public MyFileWriter(String fileName) {
         this.fileName = fileName;
     }
 
     public void writeTwoDimensIntArr (int[][] ints) throws IOException {
+
+        if (ints == null) {
+            System.out.println("there is nothing to write");
+            return;
+        }
 
         try (FileWriter out = new FileWriter(fileName)) {
             PrintWriter printWriter = new PrintWriter(out);

@@ -8,38 +8,39 @@ public class TwoDimensIntArr {
 
     public static int[][] getIntArrWithoutSameRowsAndColumns(int[][] arr) {
 
+        if (arr == null) {
+            return null;
+        }
+
+        if (arr.length == 1 || arr[0].length == 1) {return arr;}
+
         int[][] temp = getIntArrWithoutSameRows(arr);
+
+        if (temp == null) {
+            return null;
+        }
+
+        if (temp.length == 1) {return temp;}
         int[][] transposed = transposeMatrix(temp);
         int[][] tempTransposed = getIntArrWithoutSameRows(transposed);
+
+        if (tempTransposed == null) {
+            return null;
+        }
 
         return transposeMatrix(tempTransposed);
     }
 
     private static int[][] getIntArrWithoutSameRows(int[][] arr) {
 
-        boolean[] whatToDelete = new boolean[arr.length];
-        List<ArrayList<Integer>> tempInts = new ArrayList<>();
-
-
-        for (int i = 0; i < arr.length; i++) {
-            whatToDelete[i] = true;
-            tempInts.add(new ArrayList<>());
-
-            for (int j = 1; j < arr[i].length; j++) {
-                tempInts.get(i).add(arr[i][j - 1]);
-
-                if (arr[i][j] != arr[i][j - 1]) {
-                    whatToDelete[i] = false;
-                }
-
-                if (j == arr[i].length - 1) {
-                    tempInts.get(i).add(arr[i][j]);
-                }
-            }
-        }
+        boolean[] whatToDelete = whichElemToDelete(arr);
+        ArrayList<ArrayList<Integer>> tempInts = intArr2ToListOfLists(arr);
 
         removeElementsFromListViaBoolArr(whatToDelete, tempInts);
 
+        if (tempInts.size() < 1) {
+            return null;
+        }
 
         int[][] toRet = new int[tempInts.size()][tempInts.get(0).size()];
 
@@ -77,6 +78,36 @@ public class TwoDimensIntArr {
         }
 
         return toRet;
+    }
+
+    private static boolean[] whichElemToDelete (int[][] arr) {
+        boolean[] whatToDelete = new boolean[arr.length];
+
+        for (int i = 0; i < arr.length; i++) {
+            whatToDelete[i] = true;
+            for (int j = 1; j < arr[i].length; j++) {
+
+                if (arr[i][j] != arr[i][j - 1]) {
+                    whatToDelete[i] = false;
+                }
+            }
+        }
+
+        return whatToDelete;
+    }
+
+    private static ArrayList<ArrayList<Integer>> intArr2ToListOfLists(int[][] arr) {
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            list.add(new ArrayList<>());
+
+            for (int j = 1; j < arr[i].length; j++) {
+                list.get(i).add(arr[i][j]);
+            }
+        }
+
+        return list;
     }
 
 }
