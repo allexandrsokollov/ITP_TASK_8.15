@@ -1,6 +1,6 @@
 package cs.vsu.sokolov.Logic.fileHandler;
 
-import util.ArrayUtils;
+import cs.vsu.sokolov.util.ArrayUtils;
 
 import java.io.*;
 

@@ -16,6 +16,7 @@ public class ConsoleProgram {
 
     public static void task(String[] args) {
         CmdParams params = ParamsReader.parseArgs(args);
+
         int[][] arrayToHandle;
         int[][] resultArr;
 

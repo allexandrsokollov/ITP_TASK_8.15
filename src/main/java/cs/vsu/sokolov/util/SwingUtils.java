@@ -1,4 +1,4 @@
-package util;
+package cs.vsu.sokolov.util;
 
 import java.awt.Component;
 import java.awt.Dimension;

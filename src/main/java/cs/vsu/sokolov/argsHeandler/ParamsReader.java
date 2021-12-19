@@ -19,6 +19,9 @@ public class ParamsReader {
         for (int i = 0; i < args.length; i++) {
             if (args[i].equals("--help")) {
                 prams.help = true;
+
+                System.out.println("Example input");
+                System.out.println("--inputFile src/main/resources/toShow --outputFile src/main/resources/out");
                 return prams;
             }
 
