@@ -11,85 +11,56 @@ public class TwoDimensIntArr {
         if (arr == null) {
             return null;
         }
+        int[][] tempArr = arr;
 
-        if (arr.length == 1 || arr[0].length == 1) {return arr;}
+        boolean[] rowsToDelete = getIndexesToDelete(tempArr);
+        tempArr = transposeMatrix(tempArr);
+        boolean[] columnsToDelete = getIndexesToDelete(tempArr);
+        tempArr = transposeMatrix(tempArr);
 
-        int[][] temp = getIntArrWithoutSameRows(arr);
-
-        if (temp == null) {
-            return null;
-        }
-
-        if (temp.length == 1) {return temp;}
-        int[][] transposed = transposeMatrix(temp);
-        int[][] tempTransposed = getIntArrWithoutSameRows(transposed);
-
-        if (tempTransposed == null) {
-            return null;
-        }
-
-        int[][] result = transposeMatrix(tempTransposed);
-
-        boolean isThereSmthng = false;
-        boolean[] check = whichElemToDelete(result);
-        boolean[] check2 = whichElemToDelete(transposeMatrix(result));
-
-        for (boolean i : check) {
-            if (i) {
-                isThereSmthng = true;
-                break;
-            }
-        }
-
-        for (boolean i : check2) {
-            if (i) {
-                isThereSmthng = true;
-                break;
-            }
-        }
-
-        if (isThereSmthng) {
-            result = getIntArrWithoutSameRowsAndColumns(result);
-        }
-        return result;
+        return removeElementsFromListViaBoolArr(rowsToDelete, columnsToDelete, tempArr);
     }
 
 
+    private static int[][]  removeElementsFromListViaBoolArr(boolean[] rowsToDelete, boolean[] columnsToDelete, int[][] arr) {
+        List<ArrayList<Integer>> tempInts = intArr2ToListOfLists(arr);
+        int rowsAmount = tempInts.size();
 
-    private static int[][] getIntArrWithoutSameRows(int[][] arr) {
+        for (int i = 0, j = 0; i < rowsAmount; i++, j++) {
 
-        boolean[] whatToDelete = whichElemToDelete(arr);
-        ArrayList<ArrayList<Integer>> tempInts = intArr2ToListOfLists(arr);
-
-        removeElementsFromListViaBoolArr(whatToDelete, tempInts);
-
-        if (tempInts.size() < 1) {
-            return null;
-        }
-
-        int[][] toRet = new int[tempInts.size()][tempInts.get(0).size()];
-
-        for (int i = 0; i < tempInts.size(); i++) {
-            for (int j = 0; j < tempInts.get(i).size(); j++) {
-                toRet[i][j] = tempInts.get(i).get(j);
-            }
-        }
-
-
-        return toRet;
-    }
-
-    private static void  removeElementsFromListViaBoolArr(boolean[] whatToDelete, List<ArrayList<Integer>> tempInts) {
-        int listLength = tempInts.size();
-
-        for (int i = 0, j = 0; i < listLength; i++, j++) {
-
-            if (whatToDelete[j]) {
+            if (rowsToDelete[j]) {
                 tempInts.remove(i);
                 i--;
-                listLength--;
+                rowsAmount--;
             }
         }
+
+        for (int k = 0; k < rowsAmount; k++) {
+            int colsAmount = tempInts.get(k).size();
+            for (int i = 0, j = 0; i < colsAmount; i++, j++) {
+
+                if (columnsToDelete[j]) {
+                    tempInts.get(k).remove(i);
+                    i--;
+                    colsAmount--;
+                }
+            }
+        }
+
+        int[][] result = null;
+
+        if (tempInts.size() > 0) {
+
+            result = new int[tempInts.size()][tempInts.get(0).size()];
+
+            for (int i = 0; i < result.length; i++) {
+                for (int j = 0; j < result[0].length; j++) {
+                    result[i][j] = tempInts.get(i).get(j);
+                }
+            }
+        }
+
+        return result;
     }
 
     private static int[][] transposeMatrix(int[][] arr) {
@@ -105,20 +76,20 @@ public class TwoDimensIntArr {
         return toRet;
     }
 
-    private static boolean[] whichElemToDelete (int[][] arr) {
-        boolean[] whatToDelete = new boolean[arr.length];
+    private static boolean[] getIndexesToDelete (int[][] arr) {
+        boolean[] IndexesToDelete = new boolean[arr.length];
 
         for (int i = 0; i < arr.length; i++) {
-            whatToDelete[i] = true;
+            IndexesToDelete[i] = true;
             for (int j = 1; j < arr[i].length; j++) {
 
                 if (arr[i][j] != arr[i][j - 1]) {
-                    whatToDelete[i] = false;
+                    IndexesToDelete[i] = false;
                 }
             }
         }
 
-        return whatToDelete;
+        return IndexesToDelete;
     }
 
     private static ArrayList<ArrayList<Integer>> intArr2ToListOfLists(int[][] arr) {

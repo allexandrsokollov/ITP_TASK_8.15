@@ -31,9 +31,9 @@ public class FileReaderTest {
         };
 
         try {
-            Assert.assertArrayEquals(one, MyFileReader.getTwoDimensIntArr("src/main/resources/filesForTest/1.txt"));
-            Assert.assertArrayEquals(two, MyFileReader.getTwoDimensIntArr("src/main/resources/filesForTest/2.txt"));
-            Assert.assertArrayEquals(three, MyFileReader.getTwoDimensIntArr("src/main/resources/filesForTest/3.txt"));
+            Assert.assertArrayEquals(one, MyFileReader.getTwoDimensIntArr("src/main/resources/filesForArgsParser/1.txt"));
+            Assert.assertArrayEquals(two, MyFileReader.getTwoDimensIntArr("src/main/resources/filesForArgsParser/2.txt"));
+            Assert.assertArrayEquals(three, MyFileReader.getTwoDimensIntArr("src/main/resources/filesForArgsParser/3.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }

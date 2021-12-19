@@ -143,6 +143,7 @@ public class MainForm extends JFrame {
         panel1.setLayout(new GridLayoutManager(5, 4, new Insets(10, 10, 10, 10), 10, 10));
         buttonLoadInputFile = new JButton();
         buttonLoadInputFile.setText("Chose file to read");
+        buttonLoadInputFile.setToolTipText("chose file to read matrix");
         panel1.add(buttonLoadInputFile, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JScrollPane scrollPane1 = new JScrollPane();
         panel1.add(scrollPane1, new GridConstraints(0, 0, 1, 4, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
@@ -158,12 +159,15 @@ public class MainForm extends JFrame {
         panelOutput.add(tableOutput, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         buttonRandomInput = new JButton();
         buttonRandomInput.setText("Fill Matrix with random numbers ");
+        buttonRandomInput.setToolTipText("fiill above matrix with random numbers");
         panel1.add(buttonRandomInput, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         buttonSaveInputlToFile = new JButton();
         buttonSaveInputlToFile.setText("Save Inut To File ");
+        buttonSaveInputlToFile.setToolTipText("save matrix from above");
         panel1.add(buttonSaveInputlToFile, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         buttonExecute = new JButton();
         buttonExecute.setText("Execute Task");
+        buttonExecute.setToolTipText("execute task 8.15");
         panel1.add(buttonExecute, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
