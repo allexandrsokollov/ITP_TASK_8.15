@@ -3,8 +3,6 @@ package cs.vsu.sokolov.Logic.ArrayHandler;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class TwoDimensIntArrTest {
 
     @Test
