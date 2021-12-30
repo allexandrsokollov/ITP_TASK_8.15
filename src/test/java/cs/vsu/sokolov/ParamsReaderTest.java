@@ -24,12 +24,12 @@ public class ParamsReaderTest {
 
         List<CmdParams> cmdParamsList = new ArrayList<>();
         cmdParamsList.add(new CmdParams(true, true));
-        cmdParamsList.add(new CmdParams(false, false, "./inputFilePath", "./outputFilePath"));
-        cmdParamsList.add(new CmdParams(false, false, "./inputFilePath", "./outputFilePath"));
+        cmdParamsList.add(new CmdParams(false, false,  false,"./inputFilePath", "./outputFilePath"));
+        cmdParamsList.add(new CmdParams(false, false, false, "./inputFilePath", "./outputFilePath"));
         cmdParamsList.add(new CmdParams(true, false));
-        cmdParamsList.add(new CmdParams(true, true, null, null));
-        cmdParamsList.add(new CmdParams(true, true, null, null));
-        cmdParamsList.add(new CmdParams(false, true, null, null));
+        cmdParamsList.add(new CmdParams(true, true, false, null, null));
+        cmdParamsList.add(new CmdParams(true, true,  false,null, null));
+        cmdParamsList.add(new CmdParams(false, true,  false,null, null));
 
         for (int i = 0; i < cmdParamsList.size(); i++) {
             System.out.println("expected:");

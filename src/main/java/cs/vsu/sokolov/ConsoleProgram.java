@@ -21,13 +21,13 @@ public class ConsoleProgram {
         int[][] resultArr;
 
         try {
-            arrayToHandle =  MyFileReader.getTwoDimensIntArr(params.inputFile);
+            arrayToHandle =  MyFileReader.getTwoDimensIntArr(params.getInputFile());
             System.out.println("File has read successfully");
 
             resultArr = TwoDimensIntArr.getIntArrWithoutSameRowsAndColumns(arrayToHandle);
             System.out.println("array has been reformat successfully ");
 
-            MyFileWriter writer = new MyFileWriter(params.outputFile);
+            MyFileWriter writer = new MyFileWriter(params.getOutputFile());
             writer.writeTwoDimensIntArr(resultArr);
             System.out.println("File has been written successfully");
 
