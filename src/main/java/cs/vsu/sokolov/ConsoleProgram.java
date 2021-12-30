@@ -17,23 +17,29 @@ public class ConsoleProgram {
     public static void task(String[] args) {
         CmdParams params = ParamsReader.parseArgs(args);
 
-        int[][] arrayToHandle;
-        int[][] resultArr;
+        if (params.isWindow()) {
+            new MainForm();
 
-        try {
-            arrayToHandle =  MyFileReader.getTwoDimensIntArr(params.getInputFile());
-            System.out.println("File has read successfully");
+        } else {
 
-            resultArr = TwoDimensIntArr.getIntArrWithoutSameRowsAndColumns(arrayToHandle);
-            System.out.println("array has been reformat successfully ");
+            int[][] arrayToHandle;
+            int[][] resultArr;
 
-            MyFileWriter writer = new MyFileWriter(params.getOutputFile());
-            writer.writeTwoDimensIntArr(resultArr);
-            System.out.println("File has been written successfully");
+            try {
+                arrayToHandle = MyFileReader.getTwoDimensIntArr(params.getInputFile());
+                System.out.println("File has read successfully");
 
-        } catch (IOException e) {
-            System.out.println("Some problems occurred:");
-            System.out.println(e.getMessage());
+                resultArr = TwoDimensIntArr.getIntArrWithoutSameRowsAndColumns(arrayToHandle);
+                System.out.println("array has been reformat successfully ");
+
+                MyFileWriter writer = new MyFileWriter(params.getOutputFile());
+                writer.writeTwoDimensIntArr(resultArr);
+                System.out.println("File has been written successfully");
+
+            } catch (IOException e) {
+                System.out.println("Some problems occurred:");
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
