@@ -11,11 +11,6 @@ public class ParamsReader {
             return prams;
         }
 
-        if (args.length < 4) {
-            prams.setError(true);
-            prams.setHelp(true);
-            return prams;
-        }
         for (int i = 0; i < args.length; i++) {
             if (args[i].equals("--help")) {
                 prams.setHelp(true);
@@ -37,7 +32,7 @@ public class ParamsReader {
                 continue;
             }
 
-            if (args[i].equals("--window") && (i + 1 != args.length)) {
+            if (args[i].equals("--window")) {
                 prams.setWindow(true);
             }
         }
