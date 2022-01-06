@@ -2,6 +2,7 @@ package cs.vsu.sokolov;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
+
 import cs.vsu.sokolov.Logic.ArrayHandler.TwoDimensIntArr;
 import cs.vsu.sokolov.util.ArrayUtils;
 import cs.vsu.sokolov.util.JTableUtils;
